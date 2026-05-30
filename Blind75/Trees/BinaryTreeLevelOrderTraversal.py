@@ -1,0 +1,26 @@
+from collections import deque
+
+def treeLevelOrderBinaryTree(self, root):
+    if root is None:
+        return 
+    
+    result = []
+    queue = deque([root])
+
+    while queue:
+        level_size = len(queue)
+        level = []
+
+        for i in range(level_size):
+            node = queue.popleft()
+            level.append(node.val)
+
+            if node.left:
+                queue.append(node.left)
+
+            if node.right:
+                queue.append(node.right)
+
+        result.append(level)
+
+    return result
